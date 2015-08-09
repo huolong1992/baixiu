@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>修改密码</title>
+</head>
+<body>
+<form action="{*$CONTROLLER*}/passAction" method="post">
+旧密码:<input type="password" id="oldPass" name="oldPass"><br/>
+新密码:<input type="password" id="newPass" name="newPass"><br/>
+<input type="submit" value="确定">
+<input type="reset" value="重置">
+<input type="hidden" name="token" value="{*$token*}">
+</form>
+</body>
+</html>

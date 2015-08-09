@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>个人中心</title>
+</head>
+<body>
+用户名：{*$username*}<br/>
+头像：<img src="{*$face*}">点击修改<form action="{*$CONTROLLER*}/faceAction" method="post" enctype="multipart/form-data"><input type="file" name="face"><input type="submit" value="确认"></form><br/>
+邮箱：{*$email*}<br/>
+手机：{*$phone*}<br/>
+博文：{*$count*}<br/>
+<a href="{*$CONTROLLER*}/pass">修改密码</a><br/>
+<a href="{*$CONTROLLER*}/logout">退出>></a>
+</body>
+</html>

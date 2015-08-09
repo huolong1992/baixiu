@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="{*$PUBLIC*}/css/login.css" rel='stylesheet' type='text/css' />
+</head>
+ 
+<body>
+	<!--main-->
+	<div class="main">
+		<div class="user">
+			<img src="{*$PUBLIC*}/images/user.png" alt="">
+		</div>
+		<div class="login">
+			<div class="inset">
+				<form action="{*$CONTROLLER*}/registerAction" method="post">
+				         	<div>
+						<span><label>用户名</label><label class="error">长度在6~30个字符</label></span>
+						<span><input type="text" class="textbox" id="username" name="username"></span>
+					</div>
+					<div>
+						<span><label>邮箱</label><label class="error">长度在5~50个字符</label></span>
+						<span><input type="text" class="textbox" id="email" name="email"></span>
+					</div>
+					<div>
+						<span><label>密码</label><label class="error">长度在6~20个字符</label></span>
+						<span><input type="password" class="password" id="password" name="password"></span>
+					</div>
+					<div>
+						<span><label>验证码</label><label class="error"></label></span>
+						<span><input type="text" class="password" name="verify"></span>
+						<span><img src="{*$CONTROLLER*}/verify?rd={*$rd*}" onclick="javascript:this.src+='&rand='+Math.random()" alt="验证码" /><a href="javascript:void(0);" onclick="javascript:this.previousSibling.src+='&rand='+Math.random()">看不清？换一张</a></span>
+					</div>
+					<div class="sign">
+						<div class="submit">
+							<input type="submit" id="register" name="register" value="注册" >
+							<input type="hidden" name="token" value="<?=$token?>">
+						</div>
+						<span class="forget-pass">
+							<a id="change" href="{*$CONTROLLER*}/login">已注册?点击登录</a>
+						</span>
+						<div class="clear"> </div>
+					</div>
+					<input type="hidden" name="token" value="{*$token*}">
+				</form>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+
+		//切换为submit
+		$('#change').on('click', function(event){
+			event.preventDefault();
+
+			//判断是register还是login
+			var id,name,value,text;
+			var oldId = $(':submit').attr('id');
+			if (oldId == 'register') {
+				id = 'login';
+				name = 'login';
+				value = '登录';
+				text = '还没注册?点击注册'
+			}else{
+				id = 'register';
+				name = 'register';
+				value = '注册';
+				text = '已注册?点击登录';
+			}
+
+			//修改submit属性
+			
+			$('#'+oldId).attr('name', name);
+			$('#'+oldId).attr('value', value);
+			$('#'+oldId).attr('id', id);
+
+			//修改id=change的值
+			$('#change').text(text);
+		});
+	});
+</script>
+
+</body>
+</html>

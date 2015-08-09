@@ -1,0 +1,96 @@
+{*include file=$header PUBLIC=$PUBLIC CONTROLLER=$CONTROLLER title='百秀自己'*}
+    
+    <div class="mainContent">
+        <aside>
+            <div class="avatar">
+                <img src="{*$face*}"/>
+            </div>
+            <section class="topspaceinfo">
+                <span>{*$username*}</span><a href=""></a>
+                <p>暂无个性签名</p>
+            </section>
+            <div class="userinfo">
+                <p class="q-fans"> 文章：<a href="/" target="_blank">{*$count*}</a></p>
+            </div>
+            <section class="most">
+                <h2>阅读排行</h2>
+                <ul>
+                {*foreach $list2 as $value*}
+                    <li>
+                        <a href="{*$CONTROLLER*}/detail?cid={*$value.id*}">{*$value.title|truncate:20*}<span>({*$value.click*}次)</span></a>
+                    </li>
+                {*/foreach*}
+                </ul>
+            </section>
+            <section class="taglist">
+                <h2>最近访客</h2>
+                <ul>
+                    <li><a href="/"><img src="gd.png" /></a></li>
+                    <li><a href="/"><img src="gd.png" /></a></li>
+                    <li><a href="/"><img src="gd.png" /></a></li>
+                    <li><a href="/"><img src="gd.png" /></a></li>
+                    <li><a href="/"><img src="gd.png" /></a></li>
+                    <li><a href="/"><img src="gd.png" /></a></li>
+                </ul>
+                <a href="" class="more">查看更多</a>
+            </section>
+        </aside>
+        <div class="blogitem">
+            {*foreach $list1 as $value*}
+                <article>
+        <h2 class="title">
+            <a href="#">{*$value.title*}</a>
+            <span>时间({*$value.time|date_format:"Y-m-d"*}))&nbsp;&nbsp;阅读({*$value.click*})</span>
+        </h2>
+        <ul class="text">
+            {*$value.introduction*}
+        </ul>
+        <div class="textfoot" id="detail">
+            <a href="{*$CONTROLLER*}/detail?cid={*$value.id*}" id="{*$value.id*}">阅读全文</a>
+            <a href="{*$CONTROLLER*}/reply?cid={*$value.id*}">评论({*$value.reply*})</a>
+        </div>
+    </article>
+    {*/foreach*}
+    <div class="pages">
+        <a href="{*$ACTION*}?page=1">首页</a>
+        {*if $current > 1*}
+            <a href="{*$ACTION*}?page={*$current-1*}">上一页</a>
+        {*/if*}
+        {*foreach $pages as $value*}
+            {*if $value == $current*}
+                <span>{*$current*}</span>
+            {*else*}
+                <a href="{*$ACTION*}?page={*$value*}">{*$value*}</a>
+            {*/if*}
+        {*/foreach*}
+        {*if $current < $total*}
+            <a href="{*$ACTION*}?page={*$current+1*}">下一页</a>
+        {*/if*}
+        <a href="{*$ACTION*}?page={*$total*}">尾页</a>
+    </div>
+        </div>
+    </div>
+    {*include file=$footer*}
+<script type="text/javascript" src="{*$PUBLIC*}/js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    
+    ///////////点击阅读全文//////////////////
+    $('#detail a').click(function(event){
+        event.preventDefault();
+        var a = $(this);///不能写成var this=$(this);
+        var url = a.attr('href');
+        $.ajax({
+            url: url,
+            data: {'type':'ajax'}
+        }).always(function(){
+        }).done(function(data) {
+            a.parent().prev('ul').empty().append(data);
+        }).fail(function() {
+            return ;
+        });
+    });
+});
+</script>
+</body>
+</html>

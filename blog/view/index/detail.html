@@ -1,0 +1,68 @@
+{*include file=$header PUBLIC=$PUBLIC CONTROLLER=$CONTROLLER title='百秀自己'*}
+    
+    <div class="mainContent">
+        <aside>
+            <div class="avatar">
+                <img src="{*$face*}"/>
+            </div>
+            <section class="topspaceinfo">
+                <span>{*$username*}</span><a href=""></a>
+                <p>暂无个性签名</p>
+            </section>
+            <div class="userinfo">
+                <p class="q-fans"> 文章：<a href="/" target="_blank">{*$count*}</a></p>
+            </div>
+            <section class="most">
+                <h2>阅读排行</h2>
+                <ul>
+                {*foreach $list2 as $value*}
+                    <li>
+                        <a href="{*$CONTROLLER*}/detail?cid={*$value.id*}">{*$value.title|truncate:20*}<span>({*$value.click*}次)</span></a>
+                    </li>
+                {*/foreach*}
+                </ul>
+            </section>
+            <section class="taglist">
+                <h2>最近访客</h2>
+                <ul>
+                    <li><a href="/"><img src="gd.png" /></a></li>
+                    <li><a href="/"><img src="gd.png" /></a></li>
+                    <li><a href="/"><img src="gd.png" /></a></li>
+                    <li><a href="/"><img src="gd.png" /></a></li>
+                    <li><a href="/"><img src="gd.png" /></a></li>
+                    <li><a href="/"><img src="gd.png" /></a></li>
+                </ul>
+                <a href="" class="more">查看更多</a>
+            </section>
+        </aside>
+        <div class="blogitem">
+            <article>
+                <h2 class="title">
+                    <a href="#">{*$title*}</a>
+                    <span>时间({*$time|date_format:"Y-m-d"*}))&nbsp;&nbsp;阅读({*$click*})</span>
+                </h2>
+                <ul class="text">
+                    {*$content*}
+                </ul>
+            </article>
+            <article>
+                <h2 class="title">
+                    评论
+                </h2>
+                <ul class="text">
+                    {*if empty($reply)*}
+                        暂无评论
+                    {*else*}
+                        {*foreach $reply as $value*}
+                            <li>{*$value.content*}-{*$value.time|date_format:"Y-m-d"*}</li>
+                        {*/foreach*}
+                    {*/if*}
+                </ul>
+            </article>
+        </div>
+    </div>
+
+    {*include file=$footer*}
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="{*$PUBLIC*}/css/login.css" rel='stylesheet' type='text/css' />
+</head>
+ 
+<body>
+	<!--main-->
+	<div class="main">
+		<div class="user">
+			<img src="{*$PUBLIC*}/images/user.png" alt="">
+		</div>
+		<div class="login">
+			<div class="inset">
+				<form action="{*$CONTROLLER*}/loginAction" method="post">
+				         	<div>
+						<span><label>用户名/邮箱</label><label class="error"></label></span>
+						<span><input type="text" class="textbox" id="userOrEmail" name="userOrEmail" value="{*$userOrEmail*}"><img id="xbtn" src="{*$PUBLIC*}/images/x_button.png" /></span>
+					</div>
+					<div>
+						<span><label>密码</label><label class="error"></label></span>
+						<span><input type="password" class="password" id="password" name="password"></span>
+					</div>
+					<div>
+						<span><label>验证码</label><label class="error"></label></span>
+						<span><input type="text" class="password" name="verify"></span>
+						<span><img src="{*$CONTROLLER*}/verify?rd={*$rd*}" onclick="javascript:this.src+='&rand='+Math.random()" alt="验证码" /><a href="javascript:void(0);" onclick="javascript:this.previousSibling.src+='&rand='+Math.random()">看不清？换一张</a></span>
+					</div>
+					<div class="sign">
+						<div class="submit">
+							<input type="submit" id="login" name="login" value="登录" >
+						</div>
+						<div class="another">
+							<a href="{*$CONTROLLER*}/register">注册新账号</a>
+							<a href="{*$CONTROLLER*}/forget">忘记密码?</a>
+						</div>
+					</div>
+					<input type="hidden" name="token" value="{*$token*}">
+				</form>
+			</div>
+		</div>
+	</div>
+
+<script type="text/javascript">
+(function(){
+
+	/////用户名/邮箱输入框的动作/////////
+	var xbtn = document.getElementById('xbtn');
+	var userOrEmail = document.getElementById('userOrEmail');
+	xbtn.onclick = function(event) {
+		userOrEmail.value = '';
+		this.style.visibility = 'hidden';
+	};
+	userOrEmail.onfocus = function(event){
+		xbtn.style.visibility = 'visible';
+		
+	}
+	userOrEmail.onblur = function(event){
+		if (this.value == '') {
+			xbtn.style.visibility = 'hidden';
+		}
+	}
+})();
+
+</script>
+
+</body>
+</html>
