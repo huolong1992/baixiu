@@ -1,0 +1,26 @@
+1,index分组下的IndexModel.class.php的getList()的问题：
+$config = getConfig('index');
+由于getConfig函数在引入配置文件时是用include_once(),
+所有在第二次调用时返回值为空，导致IndexController里的listOrderByClick得到的值为空
+
+2,smarty 中date_format遇到的问题：
+由于我在Controller.class.php中设置了$this->objSmarty->plugins_dir = FRAME_PATH . '/smarty/conf/plugins/';
+所以使得smarty寻找date_format函数时，到我指定的plugins_dir目录中寻找了
+smarty的plugins_dir默认在smarty类所在目录下的plugins目录下
+
+3,在login.html和register.html页面中设置验证码时的问题：
+<img src="{*$CONTROLLER*}/verify?" onclick="javascript:this.src+='rand='+Math.random()">
+src='"'属性中应设置一个随机数，否则在连续刷新页面时可能无法
+正常显示验证码
+
+4,在用phpmailer发送邮件时遇到的问题：
+刚开始是用QQ邮箱，还要求设置独立密码，最后折腾了好久还是以失败告终；
+之后，换了新浪邮箱，还是一样，失败了；
+再后来换成163，感觉不错的样子，在安装了客户端等一系列要求之后，可以连接上了，可却出现could not authenticate：不能通过验证，汗-!；
+最后来看了这一篇：http://www.itnet.org.cn/news452.html的建议，还是换成了我喜爱的mail.sina.com，瞬间觉得世间充满了爱；
+在各种百度过程中，在could not connect to the server的问题中的建议是将class.smtp.php中的 :$this->smtp_conn = @fsockopen($host, $port, $errno,$errstr,  $tval); 改成@pfsockopen或者stream_socket_client，我试过了，都可以，不过我查了php文档，建议使用stream_socket_client；
+
+5,在注册时遇到的问题：
+比如这一句：insert into blog_user(username,password,email) values(?,?,?) limit 1;
+在末尾多了一句 limit 1; 我的本意是防止插入多次，但是后来发现不能加上这一句，应该把它去掉，
+改成这样：insert into blog_user(username,password,email) values(?,?,?);
