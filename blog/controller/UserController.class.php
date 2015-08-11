@@ -12,7 +12,8 @@ class UserController extends Controller{
 	public function index(){
 
 		///////////////判断是否已经登录////////////
-		@session_start();
+		//$sessionMysql = new SessionMysql;
+		$sessionMysql = new SessionMysql;
 		if (isset($_SESSION['id'])) {
 			$model = $this->M('User');
 			$userInfo = $model->getInfoById($_SESSION['id']);
@@ -40,7 +41,7 @@ class UserController extends Controller{
 	 *生成并设置验证码
 	 */
 	public function verify(){
-		@session_start();
+		$sessionMysql = new SessionMysql;
 		////////设置验证码//////
 		$rand='';
 		for ($i=0; $i<4; $i++){
@@ -73,7 +74,7 @@ class UserController extends Controller{
 	 */
 	public function login(){
 		///////////////判断是否已经登录////////////
-		@session_start();
+		$sessionMysql = new SessionMysql;
 		if (isset($_SESSION['id'])) {
 			header('Location:'.$this->strControllerUrl.'/index');
 		}else{
@@ -96,7 +97,7 @@ class UserController extends Controller{
 	 */
 	public function register(){
 		///////////////判断是否已经登录////////////
-		@session_start();
+		$sessionMysql = new SessionMysql;
 		if (isset($_SESSION['id'])) {
 			header('Location:'.$this->strControllerUrl.'/index');
 		}else{
@@ -120,7 +121,7 @@ class UserController extends Controller{
 	 */
 	public function pass(){
 		///////////////判断是否已经登录////////////
-		@session_start();
+		$sessionMysql = new SessionMysql;
 		if (!isset($_SESSION['id'])) {
 			header('Location:'.$this->strControllerUrl.'/login');
 		}else{
@@ -144,7 +145,7 @@ class UserController extends Controller{
 	public function loginAction(){
 
 		///////////////判断是否已经登录////////////
-		@session_start();
+		$sessionMysql = new SessionMysql;
 		if (isset($_SESSION['id'])) {
 			header('Location:'.$this->strGroupUrl.'/index');
 			die;
@@ -215,7 +216,7 @@ class UserController extends Controller{
 	 */
 	public function registerAction(){
 		///////////////判断是否已经登录////////////
-		@session_start();
+		$sessionMysql = new SessionMysql;
 		if (isset($_SESSION['id'])) {
 			header('Location:'.$this->strControllerUrl.'/index');
 			die;
@@ -279,7 +280,7 @@ class UserController extends Controller{
 	 *退出登录
 	 */
 	public function logout(){
-		@session_start();
+		$sessionMysql = new SessionMysql;
 		if (isset($_SESSION['id'])) {
 			unset($_SESSION['id']);
 			if (!isset($_SESSION['id'])) {///成功退出
@@ -302,7 +303,7 @@ class UserController extends Controller{
 	 */
 	public function passAction(){
 		///////////////判断是否已经登录////////////
-		@session_start();
+		$sessionMysql = new SessionMysql;
 		if (!isset($_SESSION['id'])) {
 			header('Location:'.$this->strControllerUrl.'/login');
 			die;
@@ -354,7 +355,7 @@ class UserController extends Controller{
 	public function faceAction(){
 
 		///////////////判断是否已经登录////////////
-		@session_start();
+		$sessionMysql = new SessionMysql;
 		if (!isset($_SESSION['id'])) {
 			header('Location:'.$this->strControllerUrl.'/login');
 			die;

@@ -44,6 +44,7 @@ class Dispatcher {
 		//////lib类库函数////////
 		include_once(LIB_PATH . '/Controller.class.php');
 		include_once(LIB_PATH . '/Model.class.php');
+		include_once(LIB_PATH . '/SessionMysql.class.php');
 
 	}
 

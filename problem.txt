@@ -31,3 +31,16 @@ tag.parentNode.previousSibling.innerHTML = data;
 因为firefox将空格认为是文本,而文本就是节点,
 处理办法:1,可以手动将他们的空格换行等去掉;
 	   2,可以写一个函数在调用previousSibling之前将空格去掉;
+
+7,在开发SessionMysql中遇到的问题:
+A.执行函数:session_set_save_handler(
+			array($this, 'open'),
+			array($this, 'close'),
+			array($this, 'read'),
+			array($this, 'write'),
+			array($this, 'destroy'),
+			array($this, 'gc')
+			);
+时,里面的回调函数的顺序不能改变,否则某些回调函数可能会没有被执行.
+B.在构造函数里,我完成了一些数据库的参数配置,但是应该注意,
+一定要在session_start()前面完成这些配置,因为在调用了session_start()函数之后,会马上执行open()回调函数,所以open()函数里的数据库连接参数因为没有设置,会导致连接失败!

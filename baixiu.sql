@@ -38,7 +38,7 @@ CREATE TABLE `blog_category` (
 --
 
 /*!40000 ALTER TABLE `blog_category` DISABLE KEYS */;
-INSERT INTO `blog_category` VALUES (1,'静夜思','床前明月光，疑是地上霜',1442002939,13,0),(2,'草','离离原上草，一岁一枯荣',1442002933,5,0),(3,'登鹳雀楼','白日依山尽',1442023832,6,0),(4,'春晓','春眠不觉晓',1442023832,3,0),(5,'寻隐者不遇','松下问童子',1442023832,2,0),(6,'九月九日忆山东兄弟','独在异乡为异客',1442023832,2,0),(7,'早发白帝城','朝辞白帝彩云间',1442022912,3,0),(8,'早发白帝城11','朝辞白帝彩云间11',1442022912,2,0),(9,'早发白帝城22','朝辞白帝彩云间22',1442022912,3,0),(10,'早发白帝城33','朝辞白帝彩云间33',1442022912,3,0),(11,'早发白帝城44','朝辞白帝彩云间44',1442022912,1,0),(12,'早发白帝城55','朝辞白帝彩云间55',1442022912,1,0),(13,'早发白帝城66','朝辞白帝彩云间66',1442022912,1,0);
+INSERT INTO `blog_category` VALUES (1,'静夜思','床前明月光，疑是地上霜',1442002939,43,0),(2,'草','离离原上草，一岁一枯荣',1442002933,7,0),(3,'登鹳雀楼','白日依山尽',1442023832,7,0),(4,'春晓','春眠不觉晓',1442023832,4,0),(5,'寻隐者不遇','松下问童子',1442023832,4,0),(6,'九月九日忆山东兄弟','独在异乡为异客',1442023832,3,0),(7,'早发白帝城','朝辞白帝彩云间',1442022912,4,0),(8,'早发白帝城11','朝辞白帝彩云间11',1442022912,3,0),(9,'早发白帝城22','朝辞白帝彩云间22',1442022912,4,0),(10,'早发白帝城33','朝辞白帝彩云间33',1442022912,4,0),(11,'早发白帝城44','朝辞白帝彩云间44',1442022912,8,0),(12,'早发白帝城55','朝辞白帝彩云间55',1442022912,6,0),(13,'早发白帝城66','朝辞白帝彩云间66',1442022912,6,0);
 /*!40000 ALTER TABLE `blog_category` ENABLE KEYS */;
 
 --
@@ -113,6 +113,29 @@ INSERT INTO `blog_reply` VALUES (1,1,'果真是好湿啊',1442022912),(2,1,'楼�
 /*!40000 ALTER TABLE `blog_reply` ENABLE KEYS */;
 
 --
+-- Table structure for table `blog_session`
+--
+
+DROP TABLE IF EXISTS `blog_session`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `blog_session` (
+  `sessionid` char(32) NOT NULL,
+  `data` text,
+  `expire` int(11) NOT NULL,
+  PRIMARY KEY (`sessionid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='保存会话';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `blog_session`
+--
+
+/*!40000 ALTER TABLE `blog_session` DISABLE KEYS */;
+INSERT INTO `blog_session` VALUES ('fr9mhv494gapm2c6b244jkrel1','token|s:32:\"67389902755ca00b97b8ec5.95427806\";verify|s:32:\"a6fe4f5ce680c5aef531d97153a8391b\";',1439303257);
+/*!40000 ALTER TABLE `blog_session` ENABLE KEYS */;
+
+--
 -- Table structure for table `blog_user`
 --
 
@@ -152,4 +175,4 @@ INSERT INTO `blog_user` VALUES (18,'&quot;张三&quot;','58a720a336c3f381df888c2
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-08-09 20:12:33
+-- Dump completed on 2015-08-11 22:09:28
