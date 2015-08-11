@@ -96,6 +96,7 @@ class IndexController extends Controller{
 		if ($type == 'ajax') {
 			//////根据cid获取文章内容/////////
 			$detail = $model->getDetail($cid);
+			header('Content-Type:text/html;charset=utf-8');
 			if (empty($detail)) {
 				echo '暂无该文章内容';
 			}else{

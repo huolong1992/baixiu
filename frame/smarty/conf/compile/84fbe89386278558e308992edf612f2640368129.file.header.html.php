@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-08-09 18:56:09
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-08-10 11:04:47
          compiled from "/var/www/baixiu/blog/view/common/header.html" */ ?>
 <?php /*%%SmartyHeaderCode:156830304155c72e0eb12fc6-76693257%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '84fbe89386278558e308992edf612f2640368129' => 
     array (
       0 => '/var/www/baixiu/blog/view/common/header.html',
-      1 => 1439117736,
+      1 => 1439120756,
       2 => 'file',
     ),
   ),
