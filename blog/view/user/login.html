@@ -43,25 +43,29 @@
 		</div>
 	</div>
 
+<script type="text/javascript" src="{*$PUBLIC*}/js/event.js"></script>
 <script type="text/javascript">
 (function(){
 
 	/////用户名/邮箱输入框的动作/////////
 	var xbtn = document.getElementById('xbtn');
 	var userOrEmail = document.getElementById('userOrEmail');
-	xbtn.onclick = function(event) {
+
+	Event.add(xbtn,'click',function(event) {
 		userOrEmail.value = '';
-		this.style.visibility = 'hidden';
-	};
-	userOrEmail.onfocus = function(event){
+		Event.getTarget(event).style.visibility = 'hidden';
+	});
+
+	Event.add(userOrEmail,'focus',function(event){
 		xbtn.style.visibility = 'visible';
 		
-	}
-	userOrEmail.onblur = function(event){
-		if (this.value == '') {
+	});
+
+	Event.add(userOrEmail,'blur',function(event){
+		if (Event.getTarget(event).value == '') {
 			xbtn.style.visibility = 'hidden';
 		}
-	}
+	});
 })();
 
 </script>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-08-11 21:27:04
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-08-12 11:26:32
          compiled from "/var/www/baixiu/blog/view/user/login.html" */ ?>
 <?php /*%%SmartyHeaderCode:211582427655b75ee8362004-59224200%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '519bf19e31811464e816392cccb69b7b9e311f2a' => 
     array (
       0 => '/var/www/baixiu/blog/view/user/login.html',
-      1 => 1439120756,
+      1 => 1439349988,
       2 => 'file',
     ),
   ),
@@ -83,25 +83,32 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	</div>
 
 <?php echo '<script'; ?>
+ type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PUBLIC']->value;?>
+/js/event.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
  type="text/javascript">
 (function(){
 
 	/////用户名/邮箱输入框的动作/////////
 	var xbtn = document.getElementById('xbtn');
 	var userOrEmail = document.getElementById('userOrEmail');
-	xbtn.onclick = function(event) {
+
+	Event.add(xbtn,'click',function(event) {
 		userOrEmail.value = '';
-		this.style.visibility = 'hidden';
-	};
-	userOrEmail.onfocus = function(event){
+		Event.getTarget(event).style.visibility = 'hidden';
+	});
+
+	Event.add(userOrEmail,'focus',function(event){
 		xbtn.style.visibility = 'visible';
 		
-	}
-	userOrEmail.onblur = function(event){
-		if (this.value == '') {
+	});
+
+	Event.add(userOrEmail,'blur',function(event){
+		if (Event.getTarget(event).value == '') {
 			xbtn.style.visibility = 'hidden';
 		}
-	}
+	});
 })();
 
 <?php echo '</script'; ?>
