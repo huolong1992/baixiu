@@ -44,3 +44,40 @@ A.执行函数:session_set_save_handler(
 时,里面的回调函数的顺序不能改变,否则某些回调函数可能会没有被执行.
 B.在构造函数里,我完成了一些数据库的参数配置,但是应该注意,
 一定要在session_start()前面完成这些配置,因为在调用了session_start()函数之后,会马上执行open()回调函数,所以open()函数里的数据库连接参数因为没有设置,会导致连接失败!
+
+8,在登录/注册客户端验证中遇到的问题:
+A,要判断用户输入的字符长度,应该用onkeyup,而不用onkeydown,
+因为当输入中文字符时,onkeydown将不起作用.
+B,在onkeyup回调函数里,应该设置setTimeOut(callback,0);
+否则浏览器会在输入比最小长度大1个长度时才执行回调函数,
+这里setTimeOut()函数利用了javascript顺序执行,函数是在栈中执行的原理,当执行setTimeOut的时候,
+浏览器将开辟另一个栈来执行,于是会先执行setTimeOut函数后面的代码,再立刻执行setTimeOut里的回调函数.
+参见:http://www.nowamagic.net/librarys/veda/detail/426
+
+9,提交表单验证验证码时遇到的问题:
+verifyCheck()中,在ajax回调函数中,options里的error,success,
+通过返回ture/false来表名验证码是否正确,是不可取的,
+因为success,error本身就是一个函数,返回的任何值都不是verifyCheck()
+函数的返回值,所以verifyCheck()的返回值始终为undefined,
+我采取的办法是设置一个全局变量flag,来标志验证码是否正确.
+
+10,前端优化之减少http请求数:
+合并js,css文件(服务器端minify),图片合并(css sprites)
+
+11,服务器端minify合并js,css文件时:
+<link rel="stylesheet" type="text/css" href="{*$MIN*}/?f={*$MIN_PUBLIC*}/css/login.css&v=1.0">
+一开始我的{*$MIN_PUBLIC*}=blog/public,
+于是乎firefox debug提示不存在,
+原因:minify将后面的参数f=*.js/*.css处理成如下形式(文件位于:frame/min/lib/Minify/Controller/MinApp.php的setupSources方法中):
+$uri = $base . $file;
+$path = $_SERVER['DOCUMENT_ROOT'] . $uri;
+$realpath = realpath($path);
+比如我这里就成了:var/www/blog/public/css/login.css
+解决方法:将f=..参数设为网站根目录,比如我这里:{*$MIN_PUBLIC*}=baixiu/blog/public,这里baixiu位于/var/www根目录下
+
+12,ajax.js里是否一定要decodeURIComponent(request.responseText):
+首先应该明确后端php在处理post请求的数据时,会自动decode php://input的数据填入$_POST数组,所以我们不用再次decode php://input,
+按照这种思路,那么其实在ajax使用post方式请求时,也不必调用encodeURIComponent()将post数据encode,
+既然$_POST数组里的数据是已经decode后的数据,那么返回给ajax的数据自然就是已经decode后的数据了,所以ajax里不一定要decodeURIComponent(request.responseText),
+不过其他后端语言就说不准了,所以最好还是统一加上encodeURIComponent(postdata)和decodeURIComponent(request.responseText),这样有利于代码的移植;
+另外ajax的get方式不需要encodeURIComponent(),浏览器会自动加上encode;

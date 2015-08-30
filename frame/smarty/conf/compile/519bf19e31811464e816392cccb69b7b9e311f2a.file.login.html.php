@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-08-12 11:26:32
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-08-28 10:25:48
          compiled from "/var/www/baixiu/blog/view/user/login.html" */ ?>
 <?php /*%%SmartyHeaderCode:211582427655b75ee8362004-59224200%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '519bf19e31811464e816392cccb69b7b9e311f2a' => 
     array (
       0 => '/var/www/baixiu/blog/view/user/login.html',
-      1 => 1439349988,
+      1 => 1440728745,
       2 => 'file',
     ),
   ),
@@ -19,6 +19,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_55b75ee8420ed6_40103466',
   'variables' => 
   array (
+    'MIN' => 0,
+    'MIN_PUBLIC' => 0,
     'PUBLIC' => 0,
     'CONTROLLER' => 0,
     'userOrEmail' => 0,
@@ -32,8 +34,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <head>
 <meta http-equiv="Content-Type" charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="<?php echo $_smarty_tpl->tpl_vars['PUBLIC']->value;?>
-/css/login.css" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->tpl_vars['MIN']->value;?>
+/?f=<?php echo $_smarty_tpl->tpl_vars['MIN_PUBLIC']->value;?>
+/css/login.css&v=1.0">
 </head>
  
 <body>
@@ -48,17 +51,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<form action="<?php echo $_smarty_tpl->tpl_vars['CONTROLLER']->value;?>
 /loginAction" method="post">
 				         	<div>
-						<span><label>用户名/邮箱</label><label class="error"></label></span>
+						<span><label>用户名/邮箱</label><label id="error-user"></label></span>
 						<span><input type="text" class="textbox" id="userOrEmail" name="userOrEmail" value="<?php echo $_smarty_tpl->tpl_vars['userOrEmail']->value;?>
 "><img id="xbtn" src="<?php echo $_smarty_tpl->tpl_vars['PUBLIC']->value;?>
 /images/x_button.png" /></span>
 					</div>
 					<div>
-						<span><label>密码</label><label class="error"></label></span>
+						<span><label>密码</label><label id="error-pass"></label></span>
 						<span><input type="password" class="password" id="password" name="password"></span>
 					</div>
 					<div>
-						<span><label>验证码</label><label class="error"></label></span>
+						<span><label>验证码</label><label class="error-verify"></label></span>
 						<span><input type="text" class="password" name="verify"></span>
 						<span><img src="<?php echo $_smarty_tpl->tpl_vars['CONTROLLER']->value;?>
 /verify?rd=<?php echo $_smarty_tpl->tpl_vars['rd']->value;?>
@@ -83,33 +86,32 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	</div>
 
 <?php echo '<script'; ?>
- type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PUBLIC']->value;?>
-/js/event.js"><?php echo '</script'; ?>
+ type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['MIN']->value;?>
+/?b=<?php echo $_smarty_tpl->tpl_vars['MIN_PUBLIC']->value;?>
+/js&f=event.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
  type="text/javascript">
-(function(){
 
-	/////用户名/邮箱输入框的动作/////////
-	var xbtn = document.getElementById('xbtn');
-	var userOrEmail = document.getElementById('userOrEmail');
+/////用户名/邮箱输入框的动作/////////
+var xbtn = document.getElementById('xbtn');
+var userOrEmail = document.getElementById('userOrEmail');
 
-	Event.add(xbtn,'click',function(event) {
-		userOrEmail.value = '';
-		Event.getTarget(event).style.visibility = 'hidden';
-	});
+Event.add(xbtn,'click',function(event) {
+	userOrEmail.value = '';
+	Event.getTarget(event).style.visibility = 'hidden';
+});
 
-	Event.add(userOrEmail,'focus',function(event){
-		xbtn.style.visibility = 'visible';
-		
-	});
+Event.add(userOrEmail,'focus',function(event){
+	xbtn.style.visibility = 'visible';
+	
+});
 
-	Event.add(userOrEmail,'blur',function(event){
-		if (Event.getTarget(event).value == '') {
-			xbtn.style.visibility = 'hidden';
-		}
-	});
-})();
+Event.add(userOrEmail,'blur',function(event){
+	if (Event.getTarget(event).value == '') {
+		xbtn.style.visibility = 'hidden';
+	}
+});
 
 <?php echo '</script'; ?>
 >

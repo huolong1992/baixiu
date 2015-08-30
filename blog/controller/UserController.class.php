@@ -56,6 +56,25 @@ class UserController extends Controller{
 
 
 	/**
+	 *ajax验证码验证
+	 */
+	public function verifyCheck(){
+		$sessionMysql = new SessionMysql;
+		header('Content-Type:text/html');
+		if (!isset($_GET['verify'])) {
+			echo '0';
+			return ;
+		}
+		$verify = trim($_GET['verify']);
+		if ($_SESSION['verify']!=md5($verify)) {
+			echo '0';
+			return ;
+		}
+		echo '1';
+	}
+
+
+	/**
 	 *注册后提示用户激活邮箱的界面
 	 */
 	public function code(){

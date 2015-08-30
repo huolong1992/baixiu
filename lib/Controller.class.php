@@ -27,6 +27,9 @@ class Controller{
 	//动作的URL
 	protected $strActionUrl;
 
+	//frame URL
+	protected $frameUrl;
+
 
 	/**
 	 *构造函数
@@ -44,6 +47,8 @@ class Controller{
 		$this->strGroupUrl = DOMAIN.'/'.$this->strGroup;
 		$this->strControllerUrl = DOMAIN.'/'.$this->strGroup.'/'.$this->strController;
 		//$this->strActionUrl = DOMAIN.'/'.$this->strGroup.'/'.$this->strController.'/'.$this->strAction;
+
+		$this->frameUrl = DOMAIN.'/frame';
 	}
 
 
@@ -183,6 +188,11 @@ class Controller{
 		$this->objSmarty->assign('GROUP', $this->strGroupUrl);
 		$this->objSmarty->assign('CONTROLLER', $this->strControllerUrl);
 		$this->objSmarty->assign('ACTION', $this->strActionUrl);
+
+		//定义min框架路由
+		$this->objSmarty->assign('MIN',$this->frameUrl.'/min');
+		//定义当前分组公开文件相对路径(baixiu/blog/...)
+		$this->objSmarty->assign('MIN_PUBLIC', APP_NAME.'/'.$this->strGroup.'/public');
 
 		//定义公有公开文件路由
 		$this->objSmarty->assign('COMMON_PUBLIC', DOMAIN.'/public');

@@ -91,7 +91,7 @@ form span {
 	height: 25px;
 }
 
-.error{
+#error-user,#error-mail,#error-pass,#error-verify{
 	visibility: hidden;
 	font-size: 80%;
 	margin-left: 5px;
@@ -140,7 +140,7 @@ input[type="text"]:hover,input[type="Password"]:hover,#active{
 	float:left;
 	margin-right: 11px;
 }
-.submit input[type="submit"] {
+.submit input[type="submit"],.submit input[type="button"] {
 	background: #F06B37;
 	border: none;
 	outline: none;
@@ -159,7 +159,7 @@ input[type="text"]:hover,input[type="Password"]:hover,#active{
 	-o-transition: 0.5s all;
 	font-weight: 600;
 }
-.submit input[type="submit"]:hover{
+.submit input[type="submit"]:hover,.submit input[type="button"]:hover{
 	background:#62A0C4;
 }
 

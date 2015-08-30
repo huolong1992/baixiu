@@ -3,6 +3,9 @@
  *路径配置
  */
 
+//项目名称
+define('APP_NAME', 'baixiu');
+
 //项目URL路径
 define('DOMAIN', 'http://localhost/baixiu');
 

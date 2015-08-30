@@ -347,9 +347,11 @@ class UserModel extends Model{
 		//发送
 		if(!$mail->Send()) {
 			$this->error['sendMail'] = '邮箱激活码发送失败';
-		} else {
-			return true;
-		}
+		} 
+		
+		unset($mail);
+		return true;
+		
 	}
 	
 
