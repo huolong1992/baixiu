@@ -179,10 +179,10 @@ class Controller{
 		$this->objSmarty->right_delimiter = '*}';
 
 		//是否使用缓存，项目在调试期间，不建议启用缓存
-		$this->objSmarty->caching = false; 
+		$this->objSmarty->caching = false;
 
 		//关闭调试
-		$this->objSmarty->debugging = false; 
+		$this->objSmarty->debugging = false;
 
 		////////定义当前分组,控制器,动作路由,用于界面/////////
 		$this->objSmarty->assign('GROUP', $this->strGroupUrl);

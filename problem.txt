@@ -81,3 +81,12 @@ $realpath = realpath($path);
 既然$_POST数组里的数据是已经decode后的数据,那么返回给ajax的数据自然就是已经decode后的数据了,所以ajax里不一定要decodeURIComponent(request.responseText),
 不过其他后端语言就说不准了,所以最好还是统一加上encodeURIComponent(postdata)和decodeURIComponent(request.responseText),这样有利于代码的移植;
 另外ajax的get方式不需要encodeURIComponent(),浏览器会自动加上encode;
+
+13,.htaccess重写文件中:
+RewriteCond %{REQUEST_FILENAME} !-d
+这句表示如果访问不存在的目录时,会执行后面的重写规则,
+比如:http://localhost/baixiu/nani/,则会执行后面的规则,
+但如果访问:http://localhost/baixiu/frame/min/,则还是可以访问的,
+因为存在frame这个目录,所以会执行后面的规则,
+这样就可以使用minify了,不过同时又可以访问其他目录,
+比如配置文件baixiu/conf目录等,这样又会增加安全隐患,

@@ -1,34 +1,32 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-08-31 20:05:03
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-08-31 19:50:53
          compiled from "/var/www/baixiu/blog/view/common/header.html" */ ?>
-<?php /*%%SmartyHeaderCode:156830304155c72e0eb12fc6-76693257%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:189512734555e43f9d3d5d25-29902881%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '84fbe89386278558e308992edf612f2640368129' => 
     array (
       0 => '/var/www/baixiu/blog/view/common/header.html',
-      1 => 1441022676,
+      1 => 1440937369,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '156830304155c72e0eb12fc6-76693257',
+  'nocache_hash' => '189512734555e43f9d3d5d25-29902881',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_55c72e0eb26861_88942233',
   'variables' => 
   array (
     'title' => 0,
     'COMMON_PUBLIC' => 0,
-    'MIN' => 0,
-    'MIN_PUBLIC' => 0,
-    'CONTROLLER' => 0,
     'PUBLIC' => 0,
+    'CONTROLLER' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_55e43f9d4336a2_38219269',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_55c72e0eb26861_88942233')) {function content_55c72e0eb26861_88942233($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_55e43f9d4336a2_38219269')) {function content_55e43f9d4336a2_38219269($_smarty_tpl) {?><!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -36,9 +34,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </title>
     <link rel="shortcut icon" href="<?php echo $_smarty_tpl->tpl_vars['COMMON_PUBLIC']->value;?>
 /images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->tpl_vars['MIN']->value;?>
-/?f=<?php echo $_smarty_tpl->tpl_vars['MIN_PUBLIC']->value;?>
-/css/style.css&v=1.0">
+    <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->tpl_vars['PUBLIC']->value;?>
+/css/style.css">
 </head>
 <body>
 <header>
