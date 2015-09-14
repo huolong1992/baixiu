@@ -23,7 +23,7 @@ class IndexController extends Controller{
 		/////////获得分页栏////////////////
 		$model = $this->M('Index');
 		$rowCount = $model->getRowCount('blog_category');
-		$config = $model->getConfig('index');
+		$config = $model->getConfig('blog');
 		$pagecount = intval($config['pagecount']);//注意int转换
 		$totalPage = ceil($rowCount / $pagecount);
 		$pagenum = intval($config['pagenum']);//注意int转换
@@ -92,7 +92,7 @@ class IndexController extends Controller{
 		}
 
 		$model = $this->M('Index');
-		//////////////请求分为ajax和直接响应//////////////////////
+		//////////请求分为ajax和直接响应//////////
 		if ($type == 'ajax') {
 			//////根据cid获取文章内容/////////
 			$detail = $model->getDetail($cid);
@@ -106,10 +106,9 @@ class IndexController extends Controller{
 			}
 			
 		}else{
-			
 
 			//获取左侧栏【阅读排行】
-			$config = $model->getConfig('index');
+			$config = $model->getConfig('blog');
 			$clickcount = intval($config['clickcount']);
 			$listOrderByClick = $model->getList(0, $clickcount,'click desc');
 			$this->assign('list2', $listOrderByClick);

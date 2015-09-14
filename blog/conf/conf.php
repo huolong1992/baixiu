@@ -21,6 +21,15 @@ return array(
 	'mailUsername' => 'baixiume@sina.com',//邮箱用户名
 	'mailPassword' => 'wangyongqiang50',//邮箱密码
 	'mailExpire' => 3600,//激活码过期间隔1小时=3600s
+
+	/////Memcached//////
+	///Memcached主机1
+	'm1_host' => 'localhost',///////Memcached服务器主机
+	'm1_port' => 11211,//////Memcached服务器端口号
+	'm1_user' => 'user',//////单个用户的信息
+	///Memcached主机2
+	'm2_host' => 'huolong.local',
+	'm2_port' => 11211,
 	);
 
 ?>

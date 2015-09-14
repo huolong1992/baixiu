@@ -13,35 +13,49 @@ class UserModel extends Model{
 	 *@param $nId 用户id
 	 */
 	public function getInfoById($nId){
-		////////预处理/////////
-		$sql = 'select username,face,email,phone,count from blog_user where id=? limit 1';
-		if (!($stmt = self::$db->prepare($sql))) {
-			$this->error['prepare'] = '预处理出错';
-			die;
-		}
+		$config = $this->getConfig('blog');
 
-		try {
+		//////////初始化Memcached
+		$mc = new Memcached();
+		$mc->addServer($config['m1_host'],$config['m1_port']);
+		$user = $mc->get($config['m1_user']);
 
-			//格式化参数
-			$nId = intval($nId);
-			
-			/////////绑定参数///////////
-			$stmt->bindParam(1, $nId, PDO::PARAM_INT);
-
-			//执行查询
-			$stmt->execute();
-
-			/////////返回数据/////////////
-			$result = $stmt->fetch();
-			if (!empty($result)) {
-				return $result;
-			}else{
-				$this->error['empty'] = '暂无数据';
+		//////////排除$user为false或0的情况
+		if(!$user && $mc->getResultCode() == Memcached::RES_NOTFOUND){
+			////////预处理/////////
+			$sql = 'select username,face,email,phone,count from blog_user where id=? limit 1';
+			if (!($stmt = self::$db->prepare($sql))) {
+				$this->error['prepare'] = '预处理出错';
+				die;
 			}
 
-		} catch (PDOException $e) {
-			$this->error['query'] = '查询出错';
+			try {
+
+				//格式化参数
+				$nId = intval($nId);
+				
+				/////////绑定参数///////////
+				$stmt->bindParam(1, $nId, PDO::PARAM_INT);
+
+				//执行查询
+				$stmt->execute();
+
+				/////////返回数据/////////////
+				$result = $stmt->fetch();
+				if (!empty($result)) {
+					$mc->set($config['m1_user'],$result);
+					return $result;
+				}else{
+					$this->error['empty'] = '暂无数据';
+				}
+
+			} catch (PDOException $e) {
+				$this->error['query'] = '查询出错';
+			}
+		}else{
+			return $user;
 		}
+		
 	}
 
 
@@ -307,7 +321,7 @@ class UserModel extends Model{
 
 
 	/**
-	 *发送邮寄
+	 *发送邮箱
 	 *
 	 *@param $subject string 邮件主题
 	 *@param $to string 发送目标邮箱

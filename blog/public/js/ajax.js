@@ -107,16 +107,19 @@ var Ajax = {
     getJsonp:function(url,callback){
         url += '?callback=' + callback;
         var script = Ajax.createScript(url);
-        if(script.onload != undefined){///not IE
+        var script = document.createElement ("script");
+
+        if (script.readyState){ //IE
+            script.onreadystatechange = function(){
+                if (script.readyState == "loaded" || script.readyState == "complete"){
+                    script.onreadystatechange = null;
+                    callback();
+                }
+            };
+        } else { //Others
             script.onload = function(){
                 callback();
-            }
-        }else if(script.readyState != undefined){///IE
-            if(script.readyState=='loaded' || script.readyState=='complete'){
-                callback();
-            }
-        }else{///other
-            return ;
+            };
         }
     },
 

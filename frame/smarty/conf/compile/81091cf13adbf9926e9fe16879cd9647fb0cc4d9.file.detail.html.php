@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-08-11 10:17:11
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-14 19:15:24
          compiled from "/var/www/baixiu/blog/view/index/detail.html" */ ?>
 <?php /*%%SmartyHeaderCode:149317051155c4b54da6c8a9-91471064%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '81091cf13adbf9926e9fe16879cd9647fb0cc4d9' => 
     array (
       0 => '/var/www/baixiu/blog/view/index/detail.html',
-      1 => 1439120756,
+      1 => 1441022315,
       2 => 'file',
     ),
   ),
@@ -77,12 +77,12 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
             <section class="taglist">
                 <h2>最近访客</h2>
                 <ul>
-                    <li><a href="/"><img src="gd.png" /></a></li>
-                    <li><a href="/"><img src="gd.png" /></a></li>
-                    <li><a href="/"><img src="gd.png" /></a></li>
-                    <li><a href="/"><img src="gd.png" /></a></li>
-                    <li><a href="/"><img src="gd.png" /></a></li>
-                    <li><a href="/"><img src="gd.png" /></a></li>
+                    <li><a href="/"><img src="" /></a></li>
+                    <li><a href="/"><img src="" /></a></li>
+                    <li><a href="/"><img src="" /></a></li>
+                    <li><a href="/"><img src="" /></a></li>
+                    <li><a href="/"><img src="" /></a></li>
+                    <li><a href="/"><img src="" /></a></li>
                 </ul>
                 <a href="" class="more">查看更多</a>
             </section>
