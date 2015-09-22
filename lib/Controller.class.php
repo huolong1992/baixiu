@@ -181,6 +181,9 @@ class Controller{
 		//是否使用缓存，项目在调试期间，不建议启用缓存
 		$this->objSmarty->caching = false;
 
+		//缓存时间,300s
+		$this->objSmarty->cache_lifetime = 300;
+
 		//关闭调试
 		$this->objSmarty->debugging = false;
 

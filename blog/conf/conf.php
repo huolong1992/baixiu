@@ -19,7 +19,7 @@ return array(
 	'mailCharset' => 'UTF-8',//邮件字符集
 	'mailEncoding' => 'base64',//编码方式
 	'mailUsername' => 'baixiume@sina.com',//邮箱用户名
-	'mailPassword' => 'wangyongqiang50',//邮箱密码
+	'mailPassword' => 'password',//邮箱密码
 	'mailExpire' => 3600,//激活码过期间隔1小时=3600s
 
 	/////Memcached//////

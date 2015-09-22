@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-08-31 19:50:52
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-09-18 22:03:57
          compiled from "/var/www/baixiu/blog/view/index/index.html" */ ?>
 <?php /*%%SmartyHeaderCode:61674753855e43f9ccfc7d5-40337365%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0098e22eb4545d483cf37236f25a4a67e45aede9' => 
     array (
       0 => '/var/www/baixiu/blog/view/index/index.html',
-      1 => 1439340327,
+      1 => 1441022299,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_55e43f9d35b6a9_04045596',
   'variables' => 
   array (
     'header' => 0,
@@ -33,8 +35,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'footer' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_55e43f9d35b6a9_04045596',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_55e43f9d35b6a9_04045596')) {function content_55e43f9d35b6a9_04045596($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include '/var/www/baixiu/frame/smarty/plugins/modifier.truncate.php';
 if (!is_callable('smarty_modifier_date_format')) include '/var/www/baixiu/frame/smarty/plugins/modifier.date_format.php';
@@ -77,12 +77,12 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
             <section class="taglist">
                 <h2>最近访客</h2>
                 <ul>
-                    <li><a href="/"><img src="gd.png" /></a></li>
-                    <li><a href="/"><img src="gd.png" /></a></li>
-                    <li><a href="/"><img src="gd.png" /></a></li>
-                    <li><a href="/"><img src="gd.png" /></a></li>
-                    <li><a href="/"><img src="gd.png" /></a></li>
-                    <li><a href="/"><img src="gd.png" /></a></li>
+                    <li><a href="/"><img src="" /></a></li>
+                    <li><a href="/"><img src="" /></a></li>
+                    <li><a href="/"><img src="" /></a></li>
+                    <li><a href="/"><img src="" /></a></li>
+                    <li><a href="/"><img src="" /></a></li>
+                    <li><a href="/"><img src="" /></a></li>
                 </ul>
                 <a href="" class="more">查看更多</a>
             </section>
