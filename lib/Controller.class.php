@@ -1,10 +1,10 @@
 <?php
 /**
- *主控制器
+ *主控制器,抽象类,不允许实例化
  *
  *@author 王永强<1442022614@qq.com>
  */
-class Controller{
+abstract class Controller{
 
 	//smarty实例
 	protected $objSmarty = null;

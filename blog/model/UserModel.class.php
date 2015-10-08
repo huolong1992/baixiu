@@ -13,7 +13,7 @@ class UserModel extends Model{
 	 *@param $nId 用户id
 	 */
 	public function getInfoById($nId){
-		$config = $this->getConfig('blog');
+		$config = getConfig();
 
 		//////////初始化Memcached
 		$mc = new Memcached();
@@ -295,7 +295,7 @@ class UserModel extends Model{
 			$result = $stmt->fetch();
 			if (!empty($result)) {
 				//引进邮箱配置文件
-				$config = getConfig(BLOG_GROUP);
+				$config = getConfig();
 				$interval = time()-$result['time'];
 				if ($interval < $config['mailExpire']) {
 					$sql = 'update blog_user set isverify=1 where id='.$uid;
@@ -333,7 +333,7 @@ class UserModel extends Model{
 		import('PHPMailer');
 
 		//引进邮箱配置文件
-		$config = $this->getConfig(BLOG_GROUP);
+		$config = $this->getConfig();
 
 		$mail = new PHPMailer(); //实例化
 		$mail->IsSMTP(); // 启用SMTP

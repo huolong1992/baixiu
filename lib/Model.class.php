@@ -12,9 +12,6 @@ class Model{
 	//出错原因
 	protected $error = array();
 
-	//各分组的配置文件
-	protected $config = array();
-
 
 	/**
 	 *构造函数
@@ -53,19 +50,6 @@ class Model{
 	 */
 	public function getError(){
 		return $this->error;
-	}
-
-
-
-	/**
-	 *获取指定分组下的配置文件
-	 *
-	 *@param $group string 分组名称
-	 *@return 一维数组
-	 */
-	public function getConfig($group){
-		$this->config[$group] = getConfig($group);
-		return $this->config[$group];
 	}
 
 }

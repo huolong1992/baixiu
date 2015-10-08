@@ -50,7 +50,7 @@ function loadGroupFile($class, $group, $flag){
 function import($class){
 	$class = ucfirst(strtolower($class));
 	$file = LIB_PATH . '/' . $class . '.class.php';
-	if (file_exists($file)) {
+	if (is_file($file)) {
 		if (!class_exists($class)) {
 			include($file);
 		}
@@ -60,16 +60,16 @@ function import($class){
 }
 
 
+
 /**
- *获取指定分组下的配置信息
+ *获取当前分组下的配置信息
  *
- *@param $group string 分组名
  *@return $config array 配置信息数组
  */
-function getConfig($group){
+function getConfig(){
 
 	/////////获得分组路径////////
-	switch ($group) {
+	switch (GROUP) {
 		
 		case EMPLOY_GROUP:
 			$groupPath = EMPLOY_GROUP_PATH;

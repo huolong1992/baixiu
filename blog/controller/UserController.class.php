@@ -382,7 +382,7 @@ class UserController extends Controller{
 
 		////////////////过滤数据/////////////////
 		$model = $this->M('User');
-		$config = $model->getConfig('blog');
+		$config = getConfig();
 		$file = array(
 			array('face','image/gif,image/jpeg,image/jpg,image/png',$config['maxFace']),
 			);
@@ -394,8 +394,9 @@ class UserController extends Controller{
 		}
 
 		////移动文件到指定路径并判断是否成功///////
-		$fileName1 = '/tmp/'.time() . '_' . $_FILES['face']['name'];//缩略图前存储路径
-		$fileName2 = '/face/'.time() . '_' . $_FILES['face']['name'];//缩略图后存储路径
+		$time = time();
+		$fileName1 = '/tmp/'.$time . '_' . $_FILES['face']['name'];//缩略图前存储路径
+		$fileName2 = '/face/'.$time . '_' . $_FILES['face']['name'];//缩略图后存储路径
 		if(!move_uploaded_file($_FILES['face']['tmp_name'],FILE_PATH.$fileName1)){
 			error('上传失败');
 			jump($this->strControllerUrl.'/index');

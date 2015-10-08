@@ -23,7 +23,7 @@ class IndexController extends Controller{
 		/////////获得分页栏////////////////
 		$model = $this->M('Index');
 		$rowCount = $model->getRowCount('blog_category');
-		$config = $model->getConfig('blog');
+		$config = getConfig();
 		$pagecount = intval($config['pagecount']);//注意int转换
 		$totalPage = ceil($rowCount / $pagecount);
 		$pagenum = intval($config['pagenum']);//注意int转换
@@ -108,7 +108,7 @@ class IndexController extends Controller{
 		}else{
 
 			//获取左侧栏【阅读排行】
-			$config = $model->getConfig('blog');
+			$config = getConfig();
 			$clickcount = intval($config['clickcount']);
 			$listOrderByClick = $model->getList(0, $clickcount,'click desc');
 			$this->assign('list2', $listOrderByClick);
