@@ -107,7 +107,7 @@ var Ajax = {
     getJsonp:function(url,callback){
         url += '?callback=' + callback;
         var script = Ajax.createScript(url);
-        var script = document.createElement ("script");
+        //var script = document.createElement ("script");
 
         if (script.readyState){ //IE
             script.onreadystatechange = function(){
@@ -130,7 +130,9 @@ var Ajax = {
         var jsonp_script = document.getElementById('jsonp_script');
         if(jsonp_script){
             //jsonp_script.parentNode.removeChild(jsonp_script);//this can not remove from the memory
-            delete jsonp_script;//this can
+            jsonp_script = null;
+            //delete jsonp_script 是不能删除对象的,
+            //delete jsonp_script.src可以删除对象的属性和方法
         }
 
         ///////now begin to create
